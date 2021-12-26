@@ -30,11 +30,9 @@ class Game
   def parse(input)
     raise WrongNumberOfPlayersError, 'Kоличество игроков больше 2' if input.length > 2
 
-    if input.values.each { |el| STRATEGY.include?(el) }
-      prepair(input)
-    else
-    raise NoSuchStrategyError, 'Такой стратегии не существует'
-    end
+    raise NoSuchStrategyError, 'Такой стратегии не существует' if (input.values - STRATEGY).any?
+
+    prepair(input)
   end
 end
 
@@ -56,7 +54,7 @@ end
 # rps_game_winner([%w[player1 P], %w[player2 P]]) # => 'player1 P'
 # rps_game_winner([%w[player1 S], %w[player2 R]]) # => 'player2 R'
 
-# game1 = Game.new.rps_game_winner([%w[player1 P], %w[player2 S], %w[player3 S]]) # =>WrongNumberOfPlayersError
+p game1 = Game.new.rps_game_winner([%w[player1 P], %w[player2 S], %w[player3 S]]) # =>WrongNumberOfPlayersError
 p game2 = Game.new.rps_game_winner([%w[player1 P], %w[player2 A]]) # => NoSuchStrategyError
 p game3 = Game.new.rps_game_winner([%w[player1 P], %w[player2 S]]) # => 'player2 S'
 p game4 = Game.new.rps_game_winner([%w[player1 P], %w[player2 P]]) # => 'player1 P'
