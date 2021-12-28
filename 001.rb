@@ -1,9 +1,9 @@
 # frozen_string_literal :true
 def palindrome?(string)
-  if string.nil? || string.is_a?(Numeric)
+  if string.nil?
     false
   else
-    sanitized_string = string.gsub(/\W/, '').downcase
+    sanitized_string = string.to_s.gsub(/\W/, '').downcase
     sanitized_string == sanitized_string.reverse
   end
 end
@@ -14,6 +14,8 @@ puts palindrome?(333)
 puts palindrome?(nil)
 puts palindrome?('Abracadabra')
 
+
+# || string.is_a?(Numeric)
 # Упражнение 1
 # Разработайте метод palindrome?(string), который будет определять, является ли
 # строка string палиндром (строкой, которая читается одинаково как с начала так и с

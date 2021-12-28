@@ -2,7 +2,7 @@
 class Dessert
   attr_accessor :name, :calories
 
-  def initialize(name, calories)
+  def initialize(name = nil, calories = nil)
     @name = name
     @calories = calories
   end
@@ -18,7 +18,7 @@ end
 
 class JellyBean < Dessert
   attr_accessor :flavor
-  def initialize(name, calories, flavor)
+  def initialize(name = nil, calories = nil, flavor = nil)
     super(name, calories)
     @flavor = flavor
   end
@@ -28,6 +28,7 @@ class JellyBean < Dessert
   end
 end
 
+p de = Dessert.new
 p dess = Dessert.new('Торт со вкусом водки', 199)
 p dess.healthy?
 p dess.delicious?
@@ -36,6 +37,7 @@ p dess2 = Dessert.new('Пирог с мышьяком', 390)
 p dess2.healthy?
 p dess2.delicious?
 p '---------------------------------------------------------'
+p jel = JellyBean.new
 p jelly = JellyBean.new('Ololo', 20, 'black licorice')
 p jelly.delicious?
 p jelly.healthy?

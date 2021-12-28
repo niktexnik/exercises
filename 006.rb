@@ -10,17 +10,10 @@ class Game
     parse(array_to_hash)
   end
 
-  def prepair(hash)
-    p1_hand, p2_hand = ''
+  def check_result(hash)
     p1_hand = hash['player1']
     p2_hand = hash['player2']
-    check_result(p1_hand, p2_hand)
-  end
-
-  def check_result(p1_hand, p2_hand)
-    if p1_hand == p2_hand
-      "player1 #{p1_hand}"
-    elsif p1_hand == 'P' && p2_hand == 'R' || p1_hand == 'S' && p2_hand == 'P' || p1_hand == 'R' && p2_hand == 'S'
+    if p1_hand == p2_hand || p1_hand == 'P' && p2_hand == 'R' || p1_hand == 'S' && p2_hand == 'P' || p1_hand == 'R' && p2_hand == 'S'
       "player1 #{p1_hand}"
     else
       "player2 #{p2_hand}"
@@ -32,7 +25,7 @@ class Game
 
     raise NoSuchStrategyError, 'Такой стратегии не существует' if (input.values - STRATEGY).any?
 
-    prepair(input)
+    check_result(input)
   end
 end
 
@@ -48,11 +41,6 @@ end
 # игрока походили одинаково - выигрывает первый игрок.
 
 # Тесты для примеров и проверки:
-# rps_game_winner([%w[player1 P], %w[player2 S], %w[player3 S]]) # =>WrongNumberOfPlayersError
-# rps_game_winner([%w[player1 P], %w[player2 A]]) # => NoSuchStrategyError
-# rps_game_winner([%w[player1 P], %w[player2 S]]) # => 'player2 S'
-# rps_game_winner([%w[player1 P], %w[player2 P]]) # => 'player1 P'
-# rps_game_winner([%w[player1 S], %w[player2 R]]) # => 'player2 R'
 
 p game1 = Game.new.rps_game_winner([%w[player1 P], %w[player2 S], %w[player3 S]]) # =>WrongNumberOfPlayersError
 p game2 = Game.new.rps_game_winner([%w[player1 P], %w[player2 A]]) # => NoSuchStrategyError

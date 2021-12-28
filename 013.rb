@@ -1,10 +1,10 @@
 # frozen_string_literal :true
 class String
   def palindrome?
-    if nil? || is_a?(Numeric)
+    if nil?
       false
     else
-      sanitized_string = gsub(/\W/, '').downcase
+      sanitized_string = to_s.gsub(/\W/, '').downcase
       sanitized_string == sanitized_string.reverse
     end
   end

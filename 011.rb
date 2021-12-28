@@ -2,7 +2,7 @@
 class Dessert
   attr_accessor :name, :calories
 
-  def initialize(name, calories)
+  def initialize(name = nil, calories = nil)
     @name = name
     @calories = calories
   end
@@ -16,13 +16,14 @@ class Dessert
   end
 end
 
-p dess = Dessert.new("Торт со вкусом водки", 199)
-p dess.healthy?
-p dess.delicious?
-p '---------------------------------------------------------'
-p dess2 = Dessert.new("Пирог с мышьяком", 390)
-p dess2.healthy?
-p dess2.delicious?
+p dessert = Dessert.new
+# p dess = Dessert.new("Торт со вкусом водки", 199)
+# p dess.healthy?
+# p dess.delicious?
+# p '---------------------------------------------------------'
+# p dess2 = Dessert.new("Пирог с мышьяком", 390)
+# p dess2.healthy?
+# p dess2.delicious?
 
 # Упражнение 11
 # Реализуйте класс Dessert c геттерами и сеттерами для полей класса name и

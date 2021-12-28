@@ -1,11 +1,10 @@
 # frozen_string_literal :true
 require 'active_support/time'
-require 'date'
 def date_in_future(integer)
   if integer.is_a?(Integer)
-    p (Time.now + integer.days).strftime("%d-%m-%Y %H:%M:%S")
+    (Time.now + integer.days).strftime("%d-%m-%Y %H:%M:%S")
   else
-    p Time.now.strftime("%d-%m-%Y %H:%M:%S")
+    Time.now.strftime("%d-%m-%Y %H:%M:%S")
   end
 end
 
@@ -18,6 +17,6 @@ end
 # со временем.
 
 # # Тесты для примеров и проверки:
-date_in_future([]) # => текущая дата
-date_in_future(2) # => текущая дата + 2 дня
-date_in_future(2.5) # => текущая дата
+p date_in_future([]) # => текущая дата
+p date_in_future(2) # => текущая дата + 2 дня
+p date_in_future(2.5) # => текущая дата
