@@ -3,21 +3,18 @@
 def sort_array(array)
   return [] if array.empty?
 
-  min_el = array.min
-  max_el = array.max
-  min_indexes = array.collect.with_index { |el, idx| idx if el == min_el }.compact
-  max_indexes = array.collect.with_index { |el, idx| idx if el == max_el }.compact
-  result = array.map.with_index do |el, idx|
-    if min_indexes.include?(idx)
-      max_el
-    elsif max_indexes.include?(idx)
-      min_el
+  min = array.min
+  max = array.max
+  result = array.map do |el|
+    if el == min
+      max
+    elsif el == max
+      min
     else
       el
     end
   end
-
-  result << min_el
+  result << min
 end
 
 # Дан массив целых чисел. Необходимо разработать метод sort_array(array),который
